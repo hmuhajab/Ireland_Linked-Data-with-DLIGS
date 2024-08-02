@@ -1,39 +1,56 @@
 # Ireland_Linked-Data-with-DLIGS
 
-# Ireland Geographic Data Preparation Folder
+
+
+# Ireland Geographic Data Preparation
 
 ## Project Overview
 
-This repository contains the Jupyter notebook `preparation_data.ipynb`, which is designed to preprocess and organize geographic data related to Ireland. The notebook outlines a structured approach to transform raw data into an analysis-ready format.
+This repository contains the necessary scripts and ontology files for preprocessing, cleansing, and organizing geographic data related to Ireland. The Jupyter notebook `preparation_data.ipynb` is designed to transform raw data into an analysis-ready forma. Additionally, scripts in the `Scripts` folder utilize the ontology in the `ontology` folder to populate data models, preparing them for integration into geographic information systems.
+
+
+
 
 ## Features
 
-- Data extraction from multiple geographic data sources.
-- Cleansing and normalization of geographic data.
-- Integration of data into a unified schema suitable for GIS applications.
+- **Data extraction** from multiple geographic data sources.
+- **Cleansing and normalization** of geographic data.
+- **Integration of data** into a unified dligs schema.
+- **Ontology-based data population** using RDF and OWL standards.
 
 ## Data Normalization Techniques
 
-The preprocessing of geographic data in this project involves normalization techniques to ensure the data is consistent and suitable for population into the DLIGS model.
+Normalization techniques in this project ensure data consistency and suitability for GIS applications:
 
-- **Encoding Normalization**: The `chardet` library is used to detect and set the correct encoding for CSV file imports, ensuring that all characters in the data are interpreted correctly. This step is crucial to prevent issues related to character misrepresentation, especially with non-standard characters.
+- **Encoding Normalization:** Detect and set the correct encoding for CSV file imports using the `chardet` library.
+- **Whitespace Normalization:** Remove or replace unnecessary spaces within strings, e.g., replacing spaces with underscores in names to avoid URL encoding issues.
+- **Deduplication:** Remove duplicate entries using `df.drop_duplicates()` to ensure data uniqueness.
+- **Data Type Normalization:** Standardize data formats, such as converting all dates to a consistent format or ensuring numerical data adheres to specified formats.
 
-- **Whitespace Normalization**: The data undergoes various cleaning operations to remove or replace unnecessary spaces within strings. For example, spaces are replaced with underscores in name fields to prevent issues during URL encoding (e.g., spaces turning into `%20` in web contexts).
+## Scripts Overview
 
-- **Deduplication**: Duplicate entries within the dataset are identified and removed using the `df.drop_duplicates()` function. This process helps maintain a clean dataset by ensuring that each entry is unique.
+The scripts within the `Scripts` folder perform the following operations:
+
+- **Ontology Loading and Instance Creation:** Scripts load the ontology framework and create instances based on the geographic data extracted and cleansed in the preprocessing steps.
+- **Data Populating:** Utilize the ontology to systematically populate the geographic data into structured formats that adhere to the ontology's schema.
 
 
+## Ontology Folder
 
+The `ontology` folder contains RDF and OWL files that define the structure and relationships of geographic entities. These ontologies are crucial for the semantic organization of geographic data, enabling complex queries and data interlinking within GIS applications.
 
 ## Getting Started
 
 ### Prerequisites
 
 Ensure you have the following installed:
+
 - Python 3.8 or higher
+- Jupyter Notebook or JupyterLab
 - Required Python libraries: `pandas`, `numpy`, `geopandas`
 
 You can install the necessary libraries using pip:
 
 ```bash
 pip install notebook pandas numpy geopandas
+
